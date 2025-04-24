@@ -42,9 +42,18 @@ ifeq (True,$(HAS_CONDA))
 	@echo ">>> Creating / updating conda environment '$(ENV_NAME)'"
 	@conda env create -f $(ENV_FILE) -n $(ENV_NAME) || \
 	  conda env update -f $(ENV_FILE) -n $(ENV_NAME) --prune
+	# ↓↓↓ добавляем регистрацию ядра (делается ОДИН раз после create/update)
+	@conda run -n $(ENV_NAME) python -m ipykernel install \
+		--user --name $(ENV_NAME) \
+		--display-name "TextCls ($(ENV_NAME))"
 else
 	@echo "❌ Conda не найден. Установите Anaconda / Miniconda."
 endif
+
+## Запуск Jupyter Lab в созданном окружении
+#start:                                     ## conda run jupyter lab
+#	@echo ">>> Starting Jupyter Lab ..."
+#	@conda run -n $(ENV_NAME) jupyter lab --no-browser --ip=0.0.0.0 --port=8888
 
 ## Регистрация ядра Jupyter для окружения
 kernel: env                                 ## ipykernel install
