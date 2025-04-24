@@ -1,0 +1,27 @@
+name: textcls            # имя окружения
+channels:
+  - conda-forge          # всегда первым: самые свежие пакеты
+dependencies:
+  # ─ базовые ───────────────────────────────────────────────────
+  - python=3.10
+  - pip                   # нужен, чтобы ставить wheel'ы из PyPI
+  - ipykernel             # чтобы окружение появилось в Jupyter
+  - jupyterlab            # IDE в браузере
+  - pandas
+  - openpyxl              # чтение .xlsx
+  - scikit-learn
+  - numpy
+  # ─ NLP / DL ──────────────────────────────────────────────────
+  #- pytorch::pytorch=2.2  # pytorch-cpu; для GPU см. ниже
+  - pytorch::pytorch=2.2 cuda=11.8
+  - transformers          # huggingface
+  - datasets
+  # ─ визуализация ──────────────────────────────────────────────
+  - matplotlib
+  # ─ тесты / утилиты (опционально) ────────────────────────────
+  - pytest
+  - pre-commit
+  # ─ pip-зависимости, которых нет в conda ─────────────────────
+  - pip:
+      - accelerate
+      - evaluate          # метрики от HF
