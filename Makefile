@@ -14,7 +14,7 @@ PROJECT_NAME = MIFI_Hackaton_Polyglot_News_Analyzer
 PYTHON_INTERPRETER = python3  
 
 # Имя conda-окружения и файл-манифест
-ENV_NAME = textcls
+ENV_NAME = MIFI_Hackaton_Polyglot_News_Analyzer
 ENV_FILE = environment.yml
 
 #################################################################################
@@ -45,21 +45,21 @@ ifeq (True,$(HAS_CONDA))
 	# ↓↓↓ добавляем регистрацию ядра (делается ОДИН раз после create/update)
 	@conda run -n $(ENV_NAME) python -m ipykernel install \
 		--user --name $(ENV_NAME) \
-		--display-name "TextCls ($(ENV_NAME))"
+		--display-name "MIFI Hackaton Polyglot News Analyzer ($(ENV_NAME))"
 else
 	@echo "❌ Conda не найден. Установите Anaconda / Miniconda."
 endif
 
 ## Запуск Jupyter Lab в созданном окружении
-#start:                                     ## conda run jupyter lab
-#	@echo ">>> Starting Jupyter Lab ..."
-#	@conda run -n $(ENV_NAME) jupyter lab --no-browser --ip=0.0.0.0 --port=8888
+start:                                     ## conda run jupyter lab
+	@echo ">>> Starting Jupyter Lab ..."
+	@conda run -n $(ENV_NAME) jupyter lab --no-browser --ip=0.0.0.0 --port=8888
 
 ## Регистрация ядра Jupyter для окружения
 kernel: env                                 ## ipykernel install
 	@conda run -n $(ENV_NAME) python -m ipykernel install \
 		--user --name $(ENV_NAME) \
-		--display-name "TextCls ($(ENV_NAME))"
+		--display-name "MIFI Hackaton Polyglot News Analyzer ($(ENV_NAME))"
 
 ## Запуск Jupyter Lab внутри окружения
 jupyter:                                    ## conda run jupyter lab

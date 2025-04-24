@@ -1,4 +1,4 @@
-name: textcls            # имя окружения
+name: MIFI_Hackaton_Polyglot_News_Analyzer     # имя окружения
 channels:
   - conda-forge          # всегда первым: самые свежие пакеты
 dependencies:
