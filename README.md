@@ -1,7 +1,7 @@
-{{MIFI Hackaton Polyglot News Analyzer}}
+# MIFI Hackaton Polyglot News Analyzer
 ==============================
 
-{{MIFI Hackaton Polyglot News Analyzer description}}
+## MIFI Hackaton Polyglot News Analyzer description
 
 Project Organization
 ------------
