@@ -1,5 +1,4 @@
 # MIFI Hackaton Polyglot News Analyzer
-==============================
 
 ## Description
 
