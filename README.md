@@ -1,9 +1,11 @@
 # MIFI Hackaton Polyglot News Analyzer
 ==============================
 
-## MIFI Hackaton Polyglot News Analyzer description
+## Description
 
-Project Organization
+bla bla bla  ...
+
+## Project Organization
 ------------
 
 ```
