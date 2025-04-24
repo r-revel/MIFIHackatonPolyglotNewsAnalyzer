@@ -1,27 +1,28 @@
 name: MIFI_Hackaton_Polyglot_News_Analyzer     # имя окружения
 channels:
-  - conda-forge          # всегда первым: самые свежие пакеты
+  - conda-forge
+  - pytorch
+  - defaults            # чтобы убрать предупреждение про «defaults»
+
 dependencies:
-  # ─ базовые ───────────────────────────────────────────────────
   - python=3.10
-  - pip                   # нужен, чтобы ставить wheel'ы из PyPI
-  - ipykernel             # чтобы окружение появилось в Jupyter
-  - jupyterlab            # IDE в браузере
   - pandas
-  - openpyxl              # чтение .xlsx
+  - openpyxl
   - scikit-learn
   - numpy
-  # ─ NLP / DL ──────────────────────────────────────────────────
-  #- pytorch::pytorch=2.2  # pytorch-cpu; для GPU см. ниже
-  - pytorch::pytorch=2.2 cuda=11.8
-  - transformers          # huggingface
+
+  # ─── PyTorch с поддержкой CUDA 11.8 ───────────────────
+  - pytorch=2.2         # основной пакет PyTorch
+  - cudatoolkit=11.8    # соответствующий CUDA Toolkit
+
+  # ─── NLP / DL остальное ───────────────────────────────
+  - transformers
   - datasets
-  # ─ визуализация ──────────────────────────────────────────────
-  - matplotlib
-  # ─ тесты / утилиты (опционально) ────────────────────────────
-  - pytest
-  - pre-commit
-  # ─ pip-зависимости, которых нет в conda ─────────────────────
+
+  # ─── Jupyter & utilities ──────────────────────────────
+  - ipykernel
+  - jupyterlab
+
+  - pip
   - pip:
       - accelerate
-      - evaluate          # метрики от HF
