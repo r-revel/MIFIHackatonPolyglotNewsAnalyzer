@@ -10,7 +10,7 @@
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 # BUCKET = {{ cookiecutter.s3_bucket }} 
 # PROFILE = {{ cookiecutter.aws_profile }}
-PROJECT_NAME = MIFI_Hackaton_Polyglot_News_Analyzer
+# PROJECT_NAME = MIFI_Hackaton_Polyglot_News_Analyzer
 PYTHON_INTERPRETER = python3  
 
 # Имя conda-окружения и файл-манифест
@@ -32,39 +32,29 @@ endif
 #################################################################################
 
 ## Установка зависимостей через pip (используется реже, см. env)
-requirements: test_environment              ## pip install -r requirements.txt
+requirements: test_environment  ## pip install -r requirements.txt
 	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 
 ## Создание/обновление conda-окружения из environment.yml
-env:                                        ## conda env create / update
+env:                              ## conda env create / update + kernel install
 ifeq (True,$(HAS_CONDA))
 	@echo ">>> Creating / updating conda environment '$(ENV_NAME)'"
 	@conda env create -f $(ENV_FILE) -n $(ENV_NAME) || \
 	  conda env update -f $(ENV_FILE) -n $(ENV_NAME) --prune
-	# ↓↓↓ добавляем регистрацию ядра (делается ОДИН раз после create/update)
+	@echo ">>> Registering Jupyter kernel"
 	@conda run -n $(ENV_NAME) python -m ipykernel install \
 		--user --name $(ENV_NAME) \
 		--display-name "MIFI Hackaton Polyglot News Analyzer ($(ENV_NAME))"
 else
-	@echo "❌ Conda не найден. Установите Anaconda / Miniconda."
+	@echo "❌ Conda not found; please install Anaconda/Miniconda."
 endif
 
-## Запуск Jupyter Lab в созданном окружении
-start:                                     ## conda run jupyter lab
-	@echo ">>> Starting Jupyter Lab ..."
-	@conda run -n $(ENV_NAME) jupyter lab --no-browser --ip=0.0.0.0 --port=8888
-
-## Регистрация ядра Jupyter для окружения
-kernel: env                                 ## ipykernel install
-	@conda run -n $(ENV_NAME) python -m ipykernel install \
-		--user --name $(ENV_NAME) \
-		--display-name "MIFI Hackaton Polyglot News Analyzer ($(ENV_NAME))"
-
 ## Запуск Jupyter Lab внутри окружения
-jupyter:                                    ## conda run jupyter lab
-	@echo ">>> Starting Jupyter Lab ..."
+jupyter:                         ## conda run jupyter lab
+	@echo ">>> Starting Jupyter Lab …"
 	@conda run -n $(ENV_NAME) jupyter lab --no-browser --ip=0.0.0.0 --port=8888
+
 
 #################################################################################
 # DATA PIPELINE                                                                 #
