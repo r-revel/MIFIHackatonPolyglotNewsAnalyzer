@@ -22,6 +22,7 @@ dependencies:
   # ─── Jupyter & utilities ──────────────────────────────
   - ipykernel
   - jupyterlab
+  - ipywidgets          # добавляем ipywidgets через conda
 
   # ─── Визуализация ─────────────────────────────────────
   - matplotlib          # добавляем matplotlib через conda
@@ -32,3 +33,4 @@ dependencies:
   - pip
   - pip:
       - accelerate
+      - scikit-multilearn  # добавляем skmultilearn через pip
