@@ -23,6 +23,9 @@ dependencies:
   - ipykernel
   - jupyterlab
 
+  # ─── Визуализация ─────────────────────────────────────
+  - matplotlib          # добавляем matplotlib через conda
+
   - pip
   - pip:
       - accelerate
