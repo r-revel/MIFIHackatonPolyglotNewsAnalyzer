@@ -1,8 +1,9 @@
 name: MIFI_Hackaton_Polyglot_News_Analyzer     # имя окружения
 channels:
-  - conda-forge
   - pytorch
-  - defaults            # чтобы убрать предупреждение про «defaults»
+  - nvidia
+  - conda-forge
+  - defaults
 
 dependencies:
   - python=3.10
@@ -12,8 +13,8 @@ dependencies:
   - numpy=1.23          # фиксированная версия NumPy для совместимости
 
   # ─── PyTorch с поддержкой CUDA 11.8 ───────────────────
-  - pytorch=2.2         # основной пакет PyTorch
-  - cudatoolkit=11.8    # соответствующий CUDA Toolkit
+  - pytorch=2.5.1         # основной пакет PyTorch
+  - pytorch-cuda=12.4     # соответствующий CUDA Toolkit
 
   # ─── NLP / DL остальное ───────────────────────────────
   - transformers
