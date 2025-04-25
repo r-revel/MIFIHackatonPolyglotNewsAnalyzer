@@ -9,7 +9,7 @@ dependencies:
   - pandas
   - openpyxl
   - scikit-learn
-  - numpy
+  - numpy=1.23          # фиксированная версия NumPy для совместимости
 
   # ─── PyTorch с поддержкой CUDA 11.8 ───────────────────
   - pytorch=2.2         # основной пакет PyTorch
@@ -25,6 +25,9 @@ dependencies:
 
   # ─── Визуализация ─────────────────────────────────────
   - matplotlib          # добавляем matplotlib через conda
+
+  # ─── Optuna для оптимизации гиперпараметров ───────────
+  - optuna              # добавляем optuna через conda
 
   - pip
   - pip:
