@@ -1,1 +1,16 @@
-
+accelerate
+datasets
+ipykernel
+ipywidgets
+jupyterlab
+matplotlib
+numpy==1.23
+openpyxl
+optuna
+pandas
+pip
+pytorch-cuda==12.4
+pytorch==2.5.1
+scikit-learn
+scikit-multilearn
+transformers

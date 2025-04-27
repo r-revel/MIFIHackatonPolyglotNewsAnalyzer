@@ -1,7 +1,7 @@
 .PHONY: clean data lint requirements \
         env kernel jupyter split train evaluate \
         sync_data_to_s3 sync_data_from_s3 \
-        test_environment help
+        test_environment help conda-requirements
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -36,6 +36,9 @@ requirements: test_environment  ## pip install -r requirements.txt
 	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
 
+conda-requirements:
+	python src/BuildRequirements.py
+
 ## Создание/обновление conda-окружения из environment.yml
 env:                              ## conda env create / update + kernel install
 ifeq (True,$(HAS_CONDA))
@@ -54,7 +57,6 @@ endif
 jupyter:                         ## conda run jupyter lab
 	@echo ">>> Starting Jupyter Lab …"
 	@conda run -n $(ENV_NAME) jupyter lab --no-browser --ip=0.0.0.0 --port=8888
-
 
 #################################################################################
 # DATA PIPELINE                                                                 #
