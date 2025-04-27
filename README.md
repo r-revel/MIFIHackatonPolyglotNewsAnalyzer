@@ -1,6 +1,11 @@
 # MIFI Hackaton Polyglot News Analyzer
 
-## Description
+## 
+Камерзан И.Н.
+Колесников В.В.
+Ревель Р. С.
+Сырников А. С.
+Люльчак Е. С.
 
 bla bla bla  ...
 
