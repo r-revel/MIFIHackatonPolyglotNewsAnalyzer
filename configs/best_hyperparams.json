@@ -1,7 +1,7 @@
 {
-    "learning_rate": 1.164738578432599e-05,
+    "learning_rate": 2.465937747266832e-05,
     "batch_size": 16,
-    "num_epochs": 5,
-    "weight_decay": 0.029633200073576883,
-    "best_val_microF1": 0.7406800491601803
+    "num_epochs": 6,
+    "weight_decay": 0.008412661248092061,
+    "best_val_microF1": 0.7612594659226783
 }
