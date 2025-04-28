@@ -1,0 +1,22 @@
+# Используем официальный образ Python в качестве базового
+FROM python:3.9-slim
+
+# Устанавливаем рабочую директорию внутри контейнера
+WORKDIR /app
+
+# Копируем файл requirements.txt в контейнер
+COPY src/backend/requirements.txt .
+
+# Устанавливаем зависимости
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY models/final_model /app/final_model
+
+# Копируем весь проект в контейнер
+COPY src/backend/. .
+
+# Открываем порт 8000 для доступа к приложению
+EXPOSE 8000
+
+# Команда для запуска приложения
+CMD ["python", "main.py"]

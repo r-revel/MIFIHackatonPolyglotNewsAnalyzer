@@ -1,0 +1,2 @@
+# Игнорировать .env в src/backend/
+src/backend/.env
