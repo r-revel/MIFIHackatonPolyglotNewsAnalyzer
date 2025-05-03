@@ -13,7 +13,7 @@
 ------------
 
 ```
-{{ cookiecutter.repo_name }}/
+MIFI Hackaton Polyglot News Analyzer
 ├── LICENSE     
 ├── README.md                  
 ├── Makefile                     # Makefile with commands like `make data` or `make train`                   
